@@ -1,0 +1,94 @@
+.list {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    text-align: center;
+
+
+    width: min-content;
+    margin: auto;
+}
+
+.list-item {
+    padding: 0.3rem;
+    margin-bottom: 0.2rem;
+    border: 1px rgba(0, 0, 0, 0.25) solid;
+    white-space: nowrap;
+    height: 1.5rem;
+    background-color: bisque;
+    border-radius: 0.3rem;
+    width: 50em;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.entry{
+    width: 45em;
+    padding-left: 1em;
+    padding-right: 1em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.entry > input {
+    width: 20em;
+}
+.entry > button {
+    width: 30em;
+}
+
+p{
+    margin: 0;
+}
+
+.floating {
+    position: absolute;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.list-item.drop-zone {
+    background-color: rgb(219 179 133);
+    transition-property: height padding;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    overflow: hidden;
+}
+
+
+.drag-area{
+    cursor: grab;
+}
+
+.dragging{
+    cursor: grabbing;
+}
+
+
+.full{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.popup-bg{
+    background-color: #00000050;
+    cursor: default;
+}
+
+.hidden{
+    display: none;
+}
+
+
+.list-item.drop-zone.hidden {
+    display: block;
+    height: 0px;
+    border: none;
+    padding: 0px
+}
