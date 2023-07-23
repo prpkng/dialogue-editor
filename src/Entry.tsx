@@ -1,10 +1,14 @@
 import React, {Component} from "react";
-import "./entry.css"
+import { filterString } from "./App";
+
+const keyRegEx = /[a-z-_0-9]/g
+
 
 class Entry extends React.Component<{id: number, get: (id: number) => {key: string, value: string}, set: (id: number, key: string, value: string) => void}, { popup: boolean }> {
     state = { popup: false};
 
     setKey(key: string){
+        key = filterString(key.toLowerCase().replace(' ', '-'), keyRegEx);
         this.props.set(this.props.id, key, this.props.get(this.props.id).value);
         this.setState(this.state)
     }
@@ -37,6 +41,7 @@ class Entry extends React.Component<{id: number, get: (id: number) => {key: stri
                 <div className="popup-card">
                     <button className="cross material-symbols-outlined" onClick={() => this.setPopup(false)}>close</button>
                     <h1>Edit Dialogue</h1>
+                    <span><b>[{this.props.get(this.props.id).key}]</b></span>
                     <textarea placeholder="Start writing some text..." name="value" cols={45} rows={12} value={this.props.get(this.props.id).value} onChange={s => this.setValue(s.target.value)}></textarea>
                 </div>
             </div>

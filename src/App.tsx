@@ -41,6 +41,9 @@ export function download(data: string, filename: string, type: string) {
     }, 0); 
 }
 
+export function filterString(text: string, regex: RegExp){
+    return (text.match(regex) || []).join('');
+}
 
 function App(){
 

@@ -1,63 +1,64 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
-*{
-    font-family: 'Roboto Mono', Courier, monospace;
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
+* {
+  font-family: "Roboto Mono", Courier, monospace;
 }
+
+body {
+  background-color: rgb(255, 214, 164);
+}
+
 .material-symbols-outlined {
-    font-variation-settings:
-        'FILL' 0,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 45
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 45;
 }
 
-.board{
-    background-color: antiquewhite;
-    width: 60em;
-    margin: auto;
-    justify-content: center;
-    text-align: center;
-    padding: 0.5em;
-
-
-    border-radius: 1em;
+.board {
+  background-color: antiquewhite;
+  width: 60em;
+  margin: auto;
+  justify-content: center;
+  text-align: center;
+  padding: 0.5em;
+  border-radius: 1em;
 }
 
-h1{
-    font-size: 2em;
+h1 {
+  font-size: 2em;
 }
 
-.save{
-    font-size: 1em;
-    line-height: 1em;
-    
-    padding: .95rem;
-    padding-top: .65rem;
-    padding-left: 1em;
-    padding-right: 1em;
-
-    position: fixed;
-    top: 2rem;
-    right: 10rem;
-
-    border: 1px #00000050 solid;
-    border-radius: 1em;
-    background-color: bisque;
-    width: 7em;
-    cursor: pointer;
-    transition: 100ms ease-in-out;
+.save {
+  font-size: 1rem;
+  line-height: 1em;
+  padding: 0.95rem;
+  padding-top: 0.65rem;
+  padding-left: 1em;
+  padding-right: 1em;
+  position: fixed;
+  top: 2rem;
+  right: 0em;
+  left: 45em;
+  margin: auto;
+  border: 1px rgba(0, 0, 0, 0.3137254902) solid;
+  border-radius: 1em;
+  background-color: bisque;
+  width: 7em;
+  cursor: pointer;
+  transition: 100ms ease-in-out;
+}
+.save:hover {
+  width: 8em;
+  left: 44em;
+  background-color: rgb(255, 220, 176);
+}
+.save:active {
+  top: 2.15rem;
+  right: 0em;
+  left: 56em;
+  font-size: 0.8em;
+}
+.save span {
+  position: relative;
+  font-size: 1.25em;
+  top: 0.25em;
 }
 
-.save:hover{
-    width: 8em;
-}
-.save:active{
-    top: 2.15rem;
-    right: 10.75rem;
-    font-size: .8em;
-}
-
-.save > span{
-    position: relative;
-    font-size: 1.25em;
-    top: .25em;
-}
+/*# sourceMappingURL=app.css.map */
