@@ -13,7 +13,7 @@
   border: 1px rgba(0, 0, 0, 0.25) solid;
   white-space: nowrap;
   height: 1.5rem;
-  background-color: bisque;
+  background-color: #CD6688;
   border-radius: 0.3rem;
   width: 50em;
   display: flex;
@@ -28,7 +28,7 @@
   margin-bottom: 0.2rem;
   border: 1px rgba(0, 0, 0, 0.25) solid;
   height: 1rem;
-  background-color: #ffc98a;
+  background-color: #AED8CC;
   border-radius: 0.3rem;
   width: 50em;
   text-align: center;
@@ -43,7 +43,7 @@
   height: 1.25rem;
   animation-name: expand;
   animation-duration: 200ms;
-  background-color: #ffc27c;
+  background-color: #AED8CC;
   width: 51em;
   left: -0.5em;
 }
@@ -141,7 +141,7 @@
 }
 
 .list-item.drop-zone {
-  background-color: rgb(219, 179, 133);
+  background-color: #6b2661;
   transition-property: height padding;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
@@ -193,7 +193,7 @@
   height: 26em;
   border-radius: 1em;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3098039216);
-  background-color: bisque;
+  background-color: #7A316F;
   display: flex;
   flex-direction: column;
 }
@@ -217,7 +217,12 @@
   border-radius: 1em;
   margin: auto;
   resize: none;
-  background-color: rgba(254, 254, 254, 0.9411764706);
+  background-color: rgba(255, 255, 255, 0.4392156863);
+  transition: 100ms ease-in-out;
+}
+.popup-card textarea:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.6666666667);
 }
 .popup-card .cross {
   position: absolute;

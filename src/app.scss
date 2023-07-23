@@ -1,10 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+@import "style";
+
+
 *{
     font-family: 'Roboto Mono', Courier, monospace;
 }
 
 body {
-    background-color: rgb(255, 214, 164);
+    background-color: $bg;
 }
 
 .material-symbols-outlined {
@@ -16,7 +19,7 @@ body {
 }
 
 .board{
-    background-color: antiquewhite;
+    background-color: $primary;
     width: 60em;
     margin: auto;
     justify-content: center;
@@ -29,9 +32,11 @@ body {
 
 h1{
     font-size: 2em;
+    color: whitesmoke;
 }
 
 .save{
+    color: whitesmoke;
     font-size: 1rem;
     line-height: 1em;
     
@@ -48,7 +53,7 @@ h1{
 
     border: 1px #00000050 solid;
     border-radius: 1em;
-    background-color: bisque;
+    background-color: $secondary;
     width: 7em;
     cursor: pointer;
     transition: 100ms ease-in-out;
@@ -56,7 +61,7 @@ h1{
     &:hover{
         width: 8em;
         left: 44em;
-        background-color: rgb(255, 220, 176);
+        background-color: $secondary;
     }
     
     &:active{
