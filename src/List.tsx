@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import "./list.css"
 import Entry from './Entry';
+import saveAsObject from './saving';
+import { download, getCookie, setCookie } from './App';
 
 const height = document.body.clientHeight;
 const width = document.body.clientWidth;
@@ -34,27 +36,43 @@ const reorderList = <T,>(l: T[], start: number, end: number) => {
     return l; // if start == end
 };
 
+const handleChange = (id: number, key: string, value: string) => {
+    data[id] = { key: key, value: value };
+    if(items.length < data.length){
+        for (var i = 0; i < items.length - data.length; i++){
+            items.push(<Entry id={items.length} set={handleChange} get={getData} />)
+        }
+    }
+    setCookie("data", JSON.stringify(data), 30);
+}
+function getData(id: number) {
+    return data[id];
+}
+
+var data = [{ key: "key1", value: "" }];
+var items = [<Entry id={0} set={handleChange} get={getData} />]
+
+const addItem = () => {
+    items.push(<Entry id={items.length} set={handleChange} get={getData} />)
+    data.push({ key: `key${items.length + 1}`, value: "" })
+    setCookie("data", JSON.stringify(data), 30);
+}
+
+if (getCookie("data") != "") {
+    data = JSON.parse(getCookie("data"))
+    while (data.length > items.length){
+        items.push(<Entry id={items.length} set={handleChange} get={getData} />)
+    }
+}
 
 
 const List = () => {
 
-
-    const [data, setData] = useState({0: {key: "", value: ""}})
-
-    const handleChange = (id: number, key: string, value: string) => {
-        data[id as keyof typeof data] = {key: key, value: value};
-        console.log(data)
-    }
-    const getData = (id: number) => {
-        return data[id as keyof typeof data];
-    }
+    
 
 
-    const [items, setItems] = useState([<Entry get={getData} id={0} set={handleChange}/>, <Entry get={getData} id={1} set={handleChange}/>, <Entry get={getData} id={2} set={handleChange}/>])
 
-    for (var i = 0; i < items.length; i++){
-        data[i as keyof typeof data] = {key: "", value: ""}
-    }
+
 
     //Store the index to the current dragged item
     const [dragged, setDragged] = useState<number | null>(null);
@@ -83,7 +101,6 @@ const List = () => {
             // get all drop-zones' y-axis position
             // if we were using a horizontally-scrolling list, we would get the .left property
             const positions = elements.map((e) => e.getBoundingClientRect().top);
-            console.log(elements.map((e) => e.getBoundingClientRect()))
             // get the difference with the mouse's y position
             const absDifferences = positions.map((v) => Math.abs(v - mouse[1]));
 
@@ -91,7 +108,7 @@ const List = () => {
             let result = absDifferences.indexOf(Math.min(...absDifferences));
 
             // if the item is below the dragged item, add 1 to the index
-            if (result > dragged) result -= 1;
+            if (result > dragged) result += 1;
 
             setDropZone(result);
         }
@@ -105,18 +122,33 @@ const List = () => {
                 e.preventDefault();
                 setDragged(null);
 
-                setItems((items) => reorderList([...items], dragged, dropZone));
+                items = reorderList([...items], dragged, dropZone);
             }
         };
 
         document.addEventListener("mouseup", handler);
         return () => document.removeEventListener("mouseup", handler);
-    });
+    })
 
+
+
+
+    const save = () => {
+        console.log(data)
+        var text = JSON.stringify(saveAsObject(data))
+        
+        download(text, "dialogue.json", "json");
+    }
 
 
     return (
         <div className="container">
+
+
+            <button className="save" onClick={save}>
+                Save <span className="material-symbols-outlined">save</span>
+            </button>
+
             {/* ----------FLOATING ITEM---------- */}
             {dragged !== null && (
                 <div className="floating list-item"
@@ -139,19 +171,22 @@ const List = () => {
                                     key={value.key}
                                     className="list-item"
                                 >
-                                    <div className="drag-area"  onMouseDown={(e) => {
-                                            e.preventDefault();
-                                            setDragged(index);
-                                        }}>drag</div>
+                                    <div className="drag-area material-symbols-outlined" onMouseDown={(e) => {
+                                        e.preventDefault();
+                                        setDragged(index);
+                                    }}>drag_indicator</div>
                                     {value}
                                 </div>
-                                <div className={`list-item drop-zone ${dragged === null || 
+                                <div className={`list-item drop-zone ${dragged === null ||
                                     dropZone !== index + 1 ? "hidden" : ""}`}></div>
 
                             </>
                         )}
                     </>
                 ))}
+                <div className="list-item-entry" onClick={addItem}>
+                    <span className=''>+</span>
+                </div>
             </div>
         </div>
     )

@@ -6,7 +6,7 @@
     text-align: center;
 
 
-    width: min-content;
+    width: 50em;
     margin: auto;
 }
 
@@ -26,22 +26,138 @@
     flex-direction: row;
 }
 
-.entry{
-    width: 45em;
+.list-item-entry {
+    position: relative;
+    padding: 0.3rem;
+    margin-bottom: 0.2rem;
+    border: 1px rgba(0, 0, 0, 0.25) solid;
+    height: 1rem;
+    background-color: #ffc98a;
+    border-radius: 0.3rem;
+    width: 50em;
+    text-align: center;
+    cursor: pointer;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1) 150ms;
+    animation-name: unexpand;
+    animation-duration: 200ms;
+    width: 50em;
+    left: 0em;
+}
+
+.list-item-entry:hover {
+    height: 1.25rem;
+    animation-name: expand;
+    animation-duration: 200ms;
+    background-color: #ffc27c;
+    width: 51em;
+    left: -.5em;
+}
+
+
+@keyframes expand {
+    from {
+        width: 50em;
+        left: 0em;
+    }
+
+    to {
+        width: 51em;
+        left: -.5em;
+    }
+}
+
+@keyframes unexpand {
+    from {
+        width: 51em;
+        left: -.5em;
+    }
+
+    to {
+        width: 50em;
+        left: 0em;
+    }
+}
+
+.list-item-entry:hover>* {
+    top: 0;
+}
+
+.list-item-entry>* {
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1) 150ms;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    top: -0.2rem;
+    justify-content: start;
+    text-align: center;
+    vertical-align: top;
+
+}
+
+.entry {
+    width: 48em;
     padding-left: 1em;
     padding-right: 1em;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
-.entry > input {
-    width: 20em;
-}
-.entry > button {
-    width: 30em;
+.entry>input {
+    width: 19.5em;
+    height: 1.6em;
+    outline: none;
+    padding-left: 0.5em;
+    background-color: #fefefea0;
+
+    border: 1px #00000050 solid;
+    border-radius: .25rem;
+
+    transition: 100ms ease-in-out
 }
 
-p{
+.entry>input:hover {
+    background-color: white;
+}
+
+.entry>input:focus {
+    border: 2px solid black;
+}
+
+.open-popup {
+    font-style: italic;
+    width: 33em;
+    border: 1px #00000050 solid;
+    border-radius: .25rem;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 6em;
+    cursor: pointer;
+    font-size: .85em;
+    background-color: #fefefea0;
+    transition: cubic-bezier(0.165, 0.84, 0.44, 1) 100ms;
+}
+
+.open-popup:hover{
+    width: 34em;
+    text-decoration: underline;
+    background-color: white;
+}
+
+.empty{
+    font-size: .75em;
+    width: 37.5em;
+    color: gray;
+}
+
+.empty:hover{
+    width: 39em;
+}
+
+
+
+p {
     margin: 0;
 }
 
@@ -59,29 +175,104 @@ p{
 }
 
 
-.drag-area{
+.drag-area {
     cursor: grab;
+    width: 1.25em;
+    font-size: 1.25em;
+    color: #252525;
+    transition: 50ms ease-in-out;
+    text-align: center;
 }
 
-.dragging{
+.drag-area:hover {
+    width: 1.1em;
+    font-size: 1.4em;
+    color: black;
+}
+
+.dragging {
     cursor: grabbing;
 }
 
 
-.full{
+.full {
     position: fixed;
     left: 0;
     top: 0;
     width: 100vw;
     height: 100vh;
+    z-index: 100;
 }
 
-.popup-bg{
+.popup-bg {
     background-color: #00000050;
+    backdrop-filter: blur(4px);
     cursor: default;
 }
 
-.hidden{
+.popup-card {
+    z-index: 200;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 35em;
+    height: 26em;
+    border-radius: 1em;
+    box-shadow: 0px 0px 20px #0000004f;
+    background-color: bisque;
+}
+
+.popup-card>h1 {
+    position: relative;
+    top: .5em;
+}
+
+.popup-card>.cross {
+    position: absolute;
+    z-index: 400;
+    right: 1.25rem;
+    top: 1.25rem;
+    height: 1.5em;
+    width: 1.5em;
+    border-radius: 50%;
+    border: none;
+    background-color: transparent;
+
+    transition: 50ms ease-in-out;
+    cursor: pointer;
+}
+
+.cross:hover {
+    animation-name: selcross;
+    animation-duration: 200ms;
+    background-color: #ffffff5a;
+    right: 1rem;
+    top: 1rem;
+    font-size: 1.75em;
+}
+
+.cross:active{
+    right: 1.5rem;
+    top: 1.5rem;
+    font-size: 1.25em;
+}
+
+.popup-card>textarea {
+    position: relative;
+    top: 2em;
+    bottom: 0;
+    padding: 1em;
+    border-radius: 1em;
+    margin: auto;
+    resize: none;
+
+    background-color: #fefefef0;
+}
+
+.hidden {
     display: none;
 }
 

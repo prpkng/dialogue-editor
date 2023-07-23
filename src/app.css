@@ -2,6 +2,13 @@
 *{
     font-family: 'Roboto Mono', Courier, monospace;
 }
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 45
+}
 
 .board{
     background-color: antiquewhite;
@@ -17,4 +24,40 @@
 
 h1{
     font-size: 2em;
+}
+
+.save{
+    font-size: 1em;
+    line-height: 1em;
+    
+    padding: .95rem;
+    padding-top: .65rem;
+    padding-left: 1em;
+    padding-right: 1em;
+
+    position: fixed;
+    top: 2rem;
+    right: 10rem;
+
+    border: 1px #00000050 solid;
+    border-radius: 1em;
+    background-color: bisque;
+    width: 7em;
+    cursor: pointer;
+    transition: 100ms ease-in-out;
+}
+
+.save:hover{
+    width: 8em;
+}
+.save:active{
+    top: 2.15rem;
+    right: 10.75rem;
+    font-size: .8em;
+}
+
+.save > span{
+    position: relative;
+    font-size: 1.25em;
+    top: .25em;
 }
