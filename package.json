@@ -1,7 +1,6 @@
 {
   "name": "dialogue-editor",
   "version": "0.1.0",
-  "homepage": "https://prpkng.github.io/dialogue-editor",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
