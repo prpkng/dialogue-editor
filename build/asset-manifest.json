@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/dialogue-editor/static/css/main.6fb84952.css",
+    "main.js": "/dialogue-editor/static/js/main.f7247678.js",
+    "index.html": "/dialogue-editor/index.html",
+    "main.6fb84952.css.map": "/dialogue-editor/static/css/main.6fb84952.css.map",
+    "main.f7247678.js.map": "/dialogue-editor/static/js/main.f7247678.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6fb84952.css",
+    "static/js/main.f7247678.js"
+  ]
+}
